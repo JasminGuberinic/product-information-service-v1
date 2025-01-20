@@ -16,9 +16,7 @@ class ProductController(
     @PostMapping
     fun createProduct(@RequestBody productDto: ProductDto): ResponseEntity<Any> {
         val command = CreateProductCommand(
-            name = productDto.name,
-            description = productDto.description,
-            price = productDto.price
+            productDto = productDto
         )
         requestHandler.handleCommand(command)
         return ResponseEntity.ok("Product created successfully")

@@ -12,10 +12,11 @@ class CreateProductCommandHandler(
 ) {
 
     fun handle(command: CreateProductCommand) {
-        val product = productService.createProduct(command.name, command.description, command.price)
+        val product = command.productDto.toDomain()
+        val savedProduct = productService.saveProduct(product)
 
-        // Generisanje događaja
-        val event = ProductCreatedEvent(product.id, product.name, product.description, product.price)
+        // Generate event
+        val event = ProductCreatedEvent(savedProduct.id, savedProduct.name, savedProduct.description, savedProduct.price)
         applicationEventPublisher.publishEvent(event)
     }
 }
