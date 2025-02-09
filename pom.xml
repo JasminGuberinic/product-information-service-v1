@@ -107,6 +107,27 @@
 			<version>1.13.8</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-spring-boot-starter</artifactId>
+			<version>14.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-java</artifactId>
+			<version>20.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-java-tools</artifactId>
+			<version>13.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

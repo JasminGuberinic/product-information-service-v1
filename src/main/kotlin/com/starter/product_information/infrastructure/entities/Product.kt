@@ -54,5 +54,11 @@ data class ProductEntity(
     val deliveryTime: Int,
 
     @Column(nullable = true)
-    val companyCountry: String? = null
+    val companyCountry: String? = null,
+
+    @Column(nullable = true)
+    var status: String? = null,
+
+    @Column(nullable = true)
+    var lastStatusUpdate: String? = null
 )

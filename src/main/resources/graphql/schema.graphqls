@@ -1,0 +1,73 @@
+
+type Query {
+    product(id: ID!): Product
+    products: [Product]!
+
+    manufacturer(id: ID!): Manufacturer
+    manufacturers: [Manufacturer]!
+    manufacturersByType(type: String!): [Manufacturer]!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String!
+    price: Float!
+    supplier: Supplier
+    manufacturer: Manufacturer
+    design: String!
+    customization: Boolean!
+    productionQuantity: Int!
+    brand: String!
+    distributionChannel: DistributionChannel!
+    countryOfOrigin: String!
+    certificates: [String]!
+    deliveryTime: Int!
+    companyCountry: String
+}
+
+type Supplier {
+    id: ID!
+    name: String!
+    qualityRating: Float!
+    averagePrice: Float!
+    averageDeliveryTime: Int!
+    averageOrderQuantity: Int!
+    isCertified: Boolean!
+    supplierClassification: String!
+    type: String!
+}
+
+type Manufacturer {
+    id: ID!
+    name: String!
+    country: String!
+    type: String!
+    productionCapacity: Int
+    certificates: [String]
+    qualityScore: Float
+}
+
+enum DistributionChannel {
+    RETAIL
+    WHOLESALE
+    ONLINE
+    DIRECT
+}
+
+type Mutation {
+    addSimpleProduct(input: SimpleProductInput!): Product
+    addProductWithPrice(input: ProductPriceInput!): Product
+}
+
+input SimpleProductInput {
+    name: String!
+    description: String!
+}
+
+input ProductPriceInput {
+    name: String!
+    description: String!
+    price: Float!
+    quantity: Int!
+}
