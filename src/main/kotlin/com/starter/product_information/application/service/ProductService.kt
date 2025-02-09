@@ -1,7 +1,7 @@
 package com.starter.product_information.application.service
 
 import com.starter.product_information.application.mappers.ProductMapper
-import com.starter.product_information.domain.entities.product.Product
+import com.starter.product_information.domain.model.product.Product
 import com.starter.product_information.domain.services.ProductDomainService
 import com.starter.product_information.infrastructure.entities.ProductEntity
 import com.starter.product_information.infrastructure.repositories.ProductRepository

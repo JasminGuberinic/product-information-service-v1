@@ -1,7 +1,7 @@
 package com.starter.product_information.web.dto
 
-import com.starter.product_information.domain.entities.product.Product
-import com.starter.product_information.domain.entities.product.DistributionChannel
+import com.starter.product_information.domain.model.product.Product
+import com.starter.product_information.domain.model.product.DistributionChannel
 
 data class ProductDto(
     val name: String,

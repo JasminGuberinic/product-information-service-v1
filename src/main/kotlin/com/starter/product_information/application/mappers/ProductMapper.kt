@@ -1,10 +1,10 @@
 package com.starter.product_information.application.mappers
 
-import com.starter.product_information.domain.entities.manufacturer.CustomManufacturer
-import com.starter.product_information.domain.entities.manufacturer.Manufacturer
-import com.starter.product_information.domain.entities.manufacturer.OEMManufacturer
-import com.starter.product_information.domain.entities.product.Product
-import com.starter.product_information.domain.entities.supplier.Supplier
+import com.starter.product_information.domain.model.manufacturer.CustomManufacturer
+import com.starter.product_information.domain.model.manufacturer.Manufacturer
+import com.starter.product_information.domain.model.manufacturer.OEMManufacturer
+import com.starter.product_information.domain.model.product.Product
+import com.starter.product_information.domain.model.supplier.Supplier
 import com.starter.product_information.infrastructure.entities.ManufacturerEntity
 import com.starter.product_information.infrastructure.entities.ProductEntity
 import com.starter.product_information.infrastructure.entities.SupplierEntity

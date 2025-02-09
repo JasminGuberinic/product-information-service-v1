@@ -1,9 +1,9 @@
 package com.starter.product_information.domain.services
 
-import com.starter.product_information.domain.entities.product.Product
-import com.starter.product_information.domain.entities.supplier.Supplier
-import com.starter.product_information.domain.entities.supplier.SupplierClassification
-import com.starter.product_information.domain.entities.supplier.SupplierType
+import com.starter.product_information.domain.model.product.Product
+import com.starter.product_information.domain.model.supplier.Supplier
+import com.starter.product_information.domain.model.supplier.SupplierClassification
+import com.starter.product_information.domain.model.supplier.SupplierType
 import org.springframework.stereotype.Service
 
 @Service

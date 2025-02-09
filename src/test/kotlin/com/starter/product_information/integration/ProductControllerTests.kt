@@ -1,9 +1,9 @@
 package com.starter.product_information.integration
 
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
-import com.starter.product_information.domain.entities.product.DistributionChannel
-import com.starter.product_information.domain.entities.supplier.SupplierClassification
-import com.starter.product_information.domain.entities.supplier.SupplierType
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.product.DistributionChannel
+import com.starter.product_information.domain.model.supplier.SupplierClassification
+import com.starter.product_information.domain.model.supplier.SupplierType
 import com.starter.product_information.infrastructure.entities.LocalContactInfoEntity
 import com.starter.product_information.infrastructure.entities.ManufacturerEntity
 import com.starter.product_information.infrastructure.entities.ProductEntity

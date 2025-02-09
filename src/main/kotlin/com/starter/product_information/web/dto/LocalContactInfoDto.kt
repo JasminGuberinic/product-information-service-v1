@@ -1,6 +1,6 @@
 package com.starter.product_information.web.dto
 
-import com.starter.product_information.domain.entities.contactInformation.LocalContactInfo
+import com.starter.product_information.domain.model.contactInformation.LocalContactInfo
 
 data class LocalContactInfoDto(
     val phoneNumber: String,

@@ -1,10 +1,9 @@
 package com.starter.product_information.application.service
 
-import com.starter.product_information.domain.entities.manufacturer.CustomManufacturer
-import com.starter.product_information.domain.entities.manufacturer.Manufacturer
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
-import com.starter.product_information.domain.entities.manufacturer.OEMManufacturer
-import com.starter.product_information.domain.entities.product.Product
+import com.starter.product_information.domain.model.manufacturer.CustomManufacturer
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.manufacturer.OEMManufacturer
+import com.starter.product_information.domain.model.product.Product
 import com.starter.product_information.domain.services.ManufacturerDomainService
 import com.starter.product_information.infrastructure.entities.ManufacturerEntity
 import com.starter.product_information.infrastructure.repositories.ManufacturerRepository
@@ -15,7 +14,7 @@ class ManufacturerService(
     private val manufacturerRepository: ManufacturerRepository,
     private val manufacturerDomainService: ManufacturerDomainService
 ) {
-    private fun createManufacturer(product: Product): ManufacturerEntity {
+    fun createManufacturer(product: Product): ManufacturerEntity {
         val manufacturerType = manufacturerDomainService.determineManufacturerType(product)
         val manufacturerEntity = when (manufacturerType) {
             ManufacturerType.OEM -> ManufacturerEntity(

@@ -1,8 +1,7 @@
 package com.starter.product_information.application.service
 
-import com.starter.product_information.application.mappers.SupplierMapper
-import com.starter.product_information.domain.entities.product.Product
-import com.starter.product_information.domain.entities.supplier.*
+import com.starter.product_information.domain.model.product.Product
+import com.starter.product_information.domain.model.supplier.*
 import com.starter.product_information.domain.services.SupplierDomainService
 import com.starter.product_information.infrastructure.entities.*
 import com.starter.product_information.infrastructure.repositories.SupplierRepository

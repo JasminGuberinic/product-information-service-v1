@@ -1,6 +1,6 @@
 package com.starter.product_information.web.dto
 
-import com.starter.product_information.domain.entities.contactInformation.InternationalContactInfo
+import com.starter.product_information.domain.model.contactInformation.InternationalContactInfo
 
 data class InternationalContactInfoDto(
     val phoneNumber: String,

@@ -1,7 +1,7 @@
 package com.starter.product_information.infrastructure.entities
 
-import com.starter.product_information.domain.entities.supplier.SupplierClassification
-import com.starter.product_information.domain.entities.supplier.SupplierType
+import com.starter.product_information.domain.model.supplier.SupplierClassification
+import com.starter.product_information.domain.model.supplier.SupplierType
 import jakarta.persistence.*
 
 @Entity

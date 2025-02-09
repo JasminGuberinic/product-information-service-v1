@@ -1,6 +1,6 @@
 package com.starter.product_information.infrastructure.entities
 
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
 import jakarta.persistence.*
 
 @Entity

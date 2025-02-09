@@ -1,0 +1,142 @@
+package com.starter.product_information.web.controllers
+
+enum class ItemStatus {
+    DRAFT, IN_REVIEW, ACTIVE, DISCONTINUED, ON_HOLD
+}
+
+data class StatusTransition(
+    val fromStatus: ItemStatus,
+    val toStatus: ItemStatus,
+    val timestamp: LocalDateTime = LocalDateTime.now(),
+    val reason: String? = null
+)
+
+data class ItemLifecycle(
+    val itemId: Long,
+    val currentStatus: ItemStatus,
+    val transitions: List<StatusTransition>,
+    val lastUpdated: LocalDateTime = LocalDateTime.now()
+)
+
+class InventoryItemLifecycle(
+    val id: Long,
+    private var status: ItemStatus,
+    private val transitions: MutableList<StatusTransition> = mutableListOf()
+) {
+    fun getCurrentStatus() = status
+
+    fun getTransitions() = transitions.toList()
+
+    fun canTransitionTo(newStatus: ItemStatus): Boolean = when (status) {
+        ItemStatus.DRAFT -> setOf(ItemStatus.IN_REVIEW, ItemStatus.DISCONTINUED)
+        ItemStatus.IN_REVIEW -> setOf(ItemStatus.ACTIVE, ItemStatus.DRAFT, ItemStatus.ON_HOLD)
+        ItemStatus.ACTIVE -> setOf(ItemStatus.ON_HOLD, ItemStatus.DISCONTINUED)
+        ItemStatus.ON_HOLD -> setOf(ItemStatus.ACTIVE, ItemStatus.DISCONTINUED)
+        ItemStatus.DISCONTINUED -> emptySet()
+    }.contains(newStatus)
+
+    fun transition(newStatus: ItemStatus, reason: String?) {
+        if (!canTransitionTo(newStatus)) {
+            throw IllegalStateException("Cannot transition from $status to $newStatus")
+        }
+
+        val transition = StatusTransition(status, newStatus, LocalDateTime.now(), reason)
+        transitions.add(transition)
+        status = newStatus
+    }
+}
+Copy
+Insert
+
+package com.starter.inventory_information.domain.service
+
+class InventoryLifecycleService(
+    private val inventoryRepositoryPort: InventoryRepositoryPort,
+    private val lifecycleEventProducer: LifecycleEventProducer,
+    private val lifecycleValidator: LifecycleValidator
+) {
+    fun initiateItemLifecycle(itemId: Long): InventoryItemLifecycle {
+        val item = inventoryRepositoryPort.findById(itemId)
+            .orElseThrow { NoSuchElementException("Item not found") }
+
+        return InventoryItemLifecycle(item.id, ItemStatus.DRAFT)
+    }
+
+    fun transitionStatus(
+        itemId: Long,
+        newStatus: ItemStatus,
+        reason: String?
+    ): InventoryItemLifecycle {
+        val lifecycle = getItemLifecycle(itemId)
+
+        lifecycleValidator.validateTransition(lifecycle, newStatus)
+        lifecycle.transition(newStatus, reason)
+
+        lifecycleEventProducer.publishStatusChange(
+            itemId,
+            lifecycle.getCurrentStatus(),
+            newStatus,
+            reason
+        )
+
+        return lifecycle
+    }
+
+    fun validateItemForStatus(itemId: Long, status: ItemStatus): List<ValidationResult> {
+        val item = inventoryRepositoryPort.findById(itemId)
+            .orElseThrow { NoSuchElementException("Item not found") }
+
+        return when (status) {
+            ItemStatus.ACTIVE -> validateForActive(item)
+            ItemStatus.IN_REVIEW -> validateForReview(item)
+            else -> emptyList()
+        }
+    }
+
+    private fun validateForActive(item: InventoryItem): List<ValidationResult> {
+        val validations = mutableListOf<ValidationResult>()
+
+        if (item.dimensions == null) {
+            validations.add(ValidationResult("Dimensions required for active items"))
+        }
+        if (item.weight == null) {
+            validations.add(ValidationResult("Weight required for active items"))
+        }
+        if (item.packaging == null) {
+            validations.add(ValidationResult("Packaging information required for active items"))
+        }
+
+        return validations
+    }
+
+    private fun validateForReview(item: InventoryItem): List<ValidationResult> {
+        val validations = mutableListOf<ValidationResult>()
+
+        if (item.name.isBlank()) {
+            validations.add(ValidationResult("Item name cannot be empty"))
+        }
+        if (item.price <= 0) {
+            validations.add(ValidationResult("Price must be greater than zero"))
+        }
+
+        return validations
+    }
+}
+
+data class ValidationResult(val message: String)
+
+To enhance the "Product Information" project and make it more engaging and practical, consider integrating a "Product Recommendation Engine" feature. This functionality can provide personalized product recommendations to users based on their browsing history, purchase patterns, or similar user profiles. Here's how you can approach this:
+
+Product Recommendation Engine
+User Behavior Tracking: Implement a mechanism to track user interactions with products, such as views, likes, and purchases. This data can be stored in a database for analysis.
+Recommendation Algorithm: Develop an algorithm that analyzes user behavior data to generate product recommendations. You can start with a simple collaborative filtering approach and later enhance it with machine learning models for better accuracy.
+Recommendation API: Create an API endpoint that serves product recommendations to the frontend. This API can take user ID or session data as input and return a list of recommended products.
+Integration with Frontend: Display the recommended products on the product detail page or a dedicated recommendations section. This can enhance user engagement and potentially increase sales.
+Feedback Loop: Allow users to provide feedback on recommendations (e.g., thumbs up/down), which can be used to refine the recommendation algorithm over time.
+Implementation Steps
+Data Collection: Set up a system to collect and store user interaction data. This could involve adding event listeners on the frontend to capture user actions.
+Algorithm Development: Start with a basic collaborative filtering algorithm. You can use libraries like Apache Mahout or implement your own logic.
+API Development: Develop a RESTful API endpoint that returns recommendations. Ensure it is optimized for performance, as recommendation queries can be resource-intensive.
+Frontend Integration: Use the API to fetch and display recommendations on the frontend. Ensure the UI is intuitive and seamlessly integrates with the existing design.
+Feedback Mechanism: Implement a simple feedback system where users can rate the recommendations. Use this data to improve the algorithm.
+This feature not only adds a "wow" factor to your project but also demonstrates practical application in e-commerce, enhancing user experience and potentially driving more sales. If you need help with any specific part of this implementation, feel free to ask!

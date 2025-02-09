@@ -1,6 +1,6 @@
 package com.starter.product_information.web.dto
 
-import com.starter.product_information.domain.entities.supplier.*
+import com.starter.product_information.domain.model.supplier.*
 
 data class SupplierDto(
     val type: SupplierType,

@@ -1,11 +1,11 @@
 package com.starter.product_information.application.mappers
 
-import com.starter.product_information.domain.entities.contactInformation.InternationalContactInfo
-import com.starter.product_information.domain.entities.contactInformation.LocalContactInfo
-import com.starter.product_information.domain.entities.supplier.InternationalSupplier
-import com.starter.product_information.domain.entities.supplier.LocalSupplier
-import com.starter.product_information.domain.entities.supplier.Supplier
-import com.starter.product_information.domain.entities.supplier.SupplierType
+import com.starter.product_information.domain.model.contactInformation.InternationalContactInfo
+import com.starter.product_information.domain.model.contactInformation.LocalContactInfo
+import com.starter.product_information.domain.model.supplier.InternationalSupplier
+import com.starter.product_information.domain.model.supplier.LocalSupplier
+import com.starter.product_information.domain.model.supplier.Supplier
+import com.starter.product_information.domain.model.supplier.SupplierType
 import com.starter.product_information.infrastructure.entities.SupplierEntity
 import org.springframework.stereotype.Component
 

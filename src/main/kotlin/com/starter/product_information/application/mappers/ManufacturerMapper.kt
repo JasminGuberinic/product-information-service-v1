@@ -1,9 +1,9 @@
 package com.starter.product_information.application.mappers
 
-import com.starter.product_information.domain.entities.manufacturer.CustomManufacturer
-import com.starter.product_information.domain.entities.manufacturer.Manufacturer
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
-import com.starter.product_information.domain.entities.manufacturer.OEMManufacturer
+import com.starter.product_information.domain.model.manufacturer.CustomManufacturer
+import com.starter.product_information.domain.model.manufacturer.Manufacturer
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.manufacturer.OEMManufacturer
 import com.starter.product_information.infrastructure.entities.ManufacturerEntity
 import org.springframework.stereotype.Component
 

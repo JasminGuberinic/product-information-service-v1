@@ -1,8 +1,8 @@
 package com.starter.product_information.domain.services
 
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
-import com.starter.product_information.domain.entities.product.DistributionChannel
-import com.starter.product_information.domain.entities.product.Product
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.product.DistributionChannel
+import com.starter.product_information.domain.model.product.Product
 import org.springframework.stereotype.Service
 
 @Service

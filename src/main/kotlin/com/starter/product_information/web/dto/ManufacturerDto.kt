@@ -1,9 +1,9 @@
 package com.starter.product_information.web.dto
 
-import com.starter.product_information.domain.entities.manufacturer.CustomManufacturer
-import com.starter.product_information.domain.entities.manufacturer.Manufacturer
-import com.starter.product_information.domain.entities.manufacturer.ManufacturerType
-import com.starter.product_information.domain.entities.manufacturer.OEMManufacturer
+import com.starter.product_information.domain.model.manufacturer.CustomManufacturer
+import com.starter.product_information.domain.model.manufacturer.Manufacturer
+import com.starter.product_information.domain.model.manufacturer.ManufacturerType
+import com.starter.product_information.domain.model.manufacturer.OEMManufacturer
 
 
 data class ManufacturerDto(
@@ -27,6 +27,7 @@ data class ManufacturerDto(
             )
 
             ManufacturerType.CUSTOM_HIGH_END -> TODO()
+            ManufacturerType.UNKNOWN -> TODO()
         }
     }
 }
