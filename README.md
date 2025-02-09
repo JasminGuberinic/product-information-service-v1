@@ -10,8 +10,6 @@ Product Information Service
 
 A modern, scalable product information management system built with Spring Boot and Kotlin, implementing CQRS (Command Query Responsibility Segregation) pattern and Clean Architecture principles.
 
-src ├── application # Application services, commands, and queries ├── domain # Domain model and business logic ├── infrastructure # External concerns and implementations └── interfaces # API endpoints and controllers
-
 ## 🎯 Key Features
 
 - **CQRS Implementation**: Separate command and query models for optimal performance
