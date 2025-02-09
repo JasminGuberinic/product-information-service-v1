@@ -1,6 +1,3 @@
-# product-information-service-v1
-Product Information Service
-
 # Product Information Service
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
